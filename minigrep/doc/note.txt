@@ -1,0 +1,2 @@
+* @bug
+'can't find crate for `minigrep`'

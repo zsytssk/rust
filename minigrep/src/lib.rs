@@ -9,7 +9,14 @@ pub fn run(config: Config) -> Result<(), Box<Error>> {
     f.read_to_string(&mut contents)
         .expect("something went wrong reading the file");
 
-    for line in search(&config.query, &contents) {
+    let results = if config.case_sensitive {
+        search(&config.query, &contents)
+    } else {
+        search_case_insensitive(&config.query, &contents)
+    };
+
+    println!("{:?}", results);
+    for line in results {
         println!("{}", line);
     }
     Ok(())
@@ -18,7 +25,7 @@ pub fn run(config: Config) -> Result<(), Box<Error>> {
 pub struct Config {
     /**搜索文本 */ query: String,
     /**搜索文件 */ filename: String,
-    /**搜索文件 */ case_sensitive: boo,
+    /**搜索文件 */ case_sensitive: bool,
 }
 
 impl Config {
@@ -28,8 +35,13 @@ impl Config {
         }
         let query = args[1].clone();
         let filename = args[2].clone();
+        let case_sensitive = env::var("CASE_INSENSITIVE").is_err();
 
-        Ok(Config { query, filename })
+        Ok(Config {
+            query,
+            filename,
+            case_sensitive,
+        })
     }
 }
 
@@ -64,10 +76,7 @@ mod test {
         Rust:\nsafe, fast, productive.
         Pick three.";
 
-        assert_eq!(
-            vec!["safe, fast, productive."],
-            search(query, contents)
-        );
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
 
     #[test]
