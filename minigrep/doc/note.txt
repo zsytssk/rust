@@ -1,2 +1,78 @@
+## 2017-12-01 09:17:16
+Rc<T> 可以clone一个对象.. 但是普通的多次move不能用, 这两者有什么区别
+
+* @ques Arc 可以保证多线程不会同时操作一个数据, 怎么实现的??
+
+* @ques RefCell如何保证move规则?
+
+
+## 2017-11-28 09:17:33
+#[cfg(test)] 这个是做什么的
+
+
+## 2017-11-27 09:14:57
+> 这下面报错 是因为 &self.0 在编译的时候不知道T是数字 这个我怎么处理
+> 难道就打印不出来了>??
+```rust
+fn main() {
+    let y = MyBox::new(5);
+}
+
+struct MyBox<T>(T);
+
+impl<T> MyBox<T> {
+    fn new(x: T) -> MyBox<T> {
+        MyBox(x)
+    }
+}
+
+impl<T> Deref for MyBox<T> {
+    type Target = T;
+
+    fn deref(&self) -> &T {
+        &self.0
+    }
+}
+impl<T> Drop for MyBox<T> {
+    fn drop(&mut self) {
+        println!("Dropping CustomSmartPointer with data {}", &self.0);
+    }
+}
+
+```
+
+
+
+* @todo
+> Cargo demo 例子
+> xi editor
+---------
+
+* @ques
+> 什么是lifetime
+> 如何保证lifetime
+
+* @ques enum 是干什么的
+
+* @ques stack heap 的区别
+
+* @ques null nil Nil ???
+
+
+
 * @bug
 'can't find crate for `minigrep`'
+
+暂停 tomato
+
+firefox 翻译插件
+
+tsc doc
+
+Cargo demo 页面..
+
+
+* @todo
+binary crate and a library crate
+
+

@@ -1,0 +1,1 @@
+{"rustc":11196968965147806427,"features":"[]","target":5237632055151233660,"profile":14119667493710126711,"deps":[["rand v0.3.18",2092856282560888629]],"local":[{"MtimeBased":[[1511485831,214190500],"d:\\zsytssk\\test\\rust\\adder\\target\\rls\\debug\\.fingerprint\\add-one-507a1b405a0b70d0\\dep-lib-add_one-507a1b405a0b70d0"]}],"rustflags":["--error-format=json"]}

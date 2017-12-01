@@ -1,9 +1,6 @@
 [package]
-name = "minigrep"
+name = "add-two"
 version = "0.1.0"
 authors = ["张世阳 <zsytssk@gmail.com>"]
-
-[profile.dev]
-opt-level = 1
 
 [dependencies]
