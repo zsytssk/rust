@@ -1,0 +1,10 @@
+[package]
+name = "ffi-demo"
+version = "0.1.0"
+authors = ["张世阳 <zsytssk@gmail.com>"]
+
+[lib]
+name = "ffi"
+crate-type = ["dylib"]
+
+[dependencies]

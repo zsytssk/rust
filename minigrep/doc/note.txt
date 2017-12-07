@@ -1,3 +1,50 @@
+## 2017-12-07 09:20:44
+* result
+> 如何创建
+> 如何解析
+
+* rust 如何字符串相加
+
+* 32位最大的数
+
+## 2017-12-06 09:36:08
+unsafe trait Foo<T> {
+    fn to_string(T)-> &str ;
+}
+
+unsafe impl Foo for i32 {
+    fn to_string()
+}
+
+这个怎么处理
+
+
+
+## 2017-12-06 09:20:04
+* @ques 什么意思
+slice.as_mut_ptr();
+
+* 如何在node中使用rust
+
+
+## 2017-12-05 08:59:47
+* rust 升级
+
+* @ques
+let mut x = Some(String::from("Bors"));
+Some(ref mut name)
+x 是可变 x里面包含的字符串是可变...
+
+## 2017-12-04 09:00:55
+* Result<u8, _> = "34".parse() ??
+> Result 可以从34parse过去??
+
+* pattern 到底是干什么的??
+> statement expression
+
+* shadow variables ??
+
+
 ## 2017-12-01 09:17:16
 Rc<T> 可以clone一个对象.. 但是普通的多次move不能用, 这两者有什么区别
 
