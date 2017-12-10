@@ -1,0 +1,5 @@
+Fn() + Send + 'static 这个是什么意思
+type Result<T> = Result<T, std::io::Error>;
+type Dd<T> = Result<T, std::io::Error>; 这样可以
+
+
