@@ -1,0 +1,8 @@
+[package]
+name = "localServer"
+version = "0.1.0"
+authors = ["张世阳 <zsytssk@gmail.com>"]
+
+[dependencies]
+futures = "0.1.14"
+hyper = "0.11"
