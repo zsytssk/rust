@@ -1,3 +1,30 @@
+## 2018-01-12 09:31:04
+* @ques 如何在闭包中修改外部变量
+
+* box里面的函数为什么可以直接运行 不需要先从box中拿出来吗
+```rust
+
+    let a = Box::new(move || {
+        println!("This is a");
+    });
+
+    a.unwrap();
+
+```
+
+```rust
+ // 为什么是 &&x
+let array1 = [1, 2, 3];
+println!("Find 2 in array1: {:?}", array1.iter()     .find(|&&x| x == 2));
+// https://rustbyexample.com/fn/closures/closure_examples/iter_any.html
+// https://rustbyexample.com/fn/closures/closure_examples/iter_find.html
+```
+
+
+## 2018-01-03 09:27:22
+* self-contained function in rust
+https://stackoverflow.com/questions/29617389/cant-capture-dynamic-environment-in-a-fn-item/29618235
+
 ## 2017-12-16 09:08:25
 * 能不能自己写一个本地的文件服务器
 

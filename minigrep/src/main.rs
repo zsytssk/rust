@@ -1,51 +1,36 @@
-extern crate minigrep;
-use minigrep::ThreadPool;
-
-use std::io::prelude::*;
-use std::net::TcpListener;
-use std::net::TcpStream;
-use std::fs::File;
-use std::thread;
-use std::time::Duration;
-
+fn is_odd(n: u32) -> bool {
+    n % 2 == 1
+}
+fn is_not_odd(n: u32) -> bool {
+    n % 2 == 0
+}
+fn is_odd3(n: u32) -> bool {
+    n % 3 == 0
+}
 fn main() {
-    let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
-    let pool = ThreadPool::new(4);
+    let upper = 1000;
+    let mut acc = 0;
 
-    for stream in listener.incoming() {
-        let stream = stream.unwrap();
+    for n in 0.. {
+        let n_squared = n * n;
 
-        pool.execute(|| {
-            handle_connection(stream);
-        });
+        if n_squared >= upper {
+            break;
+        } else if is_not_odd(n_squared) {
+            continue;
+        } else if is_odd3(n_squared) {
+            continue;
+        }
+        acc += n_squared;
     }
 
-    println!("Shutting down.");
-}
+    println!("{}", acc);
 
-fn handle_connection(mut stream: TcpStream) {
-    let mut buffer = [0; 512];
-    stream.read(&mut buffer).unwrap();
-
-    let get = b"GET / HTTP/1.1\r\n";
-    let sleep = b"GET /sleep HTTP/1.1\r\n";
-
-    let (status_line, filename) = if buffer.starts_with(get) {
-        ("HTTP/1.1 200 OK\r\n\t\n", "hello.html")
-    } else if buffer.starts_with(sleep) {
-        thread::sleep(Duration::from_secs(5));
-        ("HTTP/1.1 200 OK\r\n\t\n", "hello.html")
-    } else {
-        ("HTTP/1.1 404 NOT FOUND\r\n\t\n", "404.html")
-    };
-
-    let mut file = File::open(filename).unwrap();
-    let mut contents = String::new();
-
-    file.read_to_string(&mut contents).unwrap();
-
-    let response = format!("{}{}", status_line, contents);
-
-    stream.write(response.as_bytes()).unwrap();
-    stream.flush().unwrap();
+    let sum_of_squared_odd_numbers: u32 = (0..)
+        .map(|n| n * n)
+        .take_while(|&n_squared| n_squared < upper)
+        .filter(|&n_squared| !is_odd3(n_squared))
+        .filter(|&n_squared| is_odd(n_squared))
+        .fold(0, |acc, n_squared| acc + n_squared);
+    println!("{}", sum_of_squared_odd_numbers);
 }
