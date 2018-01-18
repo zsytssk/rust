@@ -1,15 +1,26 @@
+## 2018-01-18 09:48:29
+
+rustc --crate-name=dest --crate-type=lib src/my/mod.rs
+
+rustc src/main.rs --extern dest=libdest.rlib
+
+## 2018-01-15 09:24:01
+
+take_while 是一遇到错误就会停止
+filter 是选取区域中所有正确的
+
 ## 2018-01-12 09:31:04
+
 * @ques 如何在闭包中修改外部变量
 
-* box里面的函数为什么可以直接运行 不需要先从box中拿出来吗
-```rust
+* box 里面的函数为什么可以直接运行 不需要先从 box 中拿出来吗
 
+```rust
     let a = Box::new(move || {
         println!("This is a");
     });
 
     a.unwrap();
-
 ```
 
 ```rust
@@ -20,79 +31,84 @@ println!("Find 2 in array1: {:?}", array1.iter()     .find(|&&x| x == 2));
 // https://rustbyexample.com/fn/closures/closure_examples/iter_find.html
 ```
 
-
 ## 2018-01-03 09:27:22
+
 * self-contained function in rust
-https://stackoverflow.com/questions/29617389/cant-capture-dynamic-environment-in-a-fn-item/29618235
+  https://stackoverflow.com/questions/29617389/cant-capture-dynamic-environment-in-a-fn-item/29618235
 
 ## 2017-12-16 09:08:25
+
 * 能不能自己写一个本地的文件服务器
 
-* 函数本身不知道有多大, 但是创建一FnBox就知道了?? 还有这样的道理
-> 查看前几章信息
+* 函数本身不知道有多大, 但是创建一 FnBox 就知道了?? 还有这样的道理
+  > 查看前几章信息
 
 ## 2017-12-07 09:20:44
+
 * result
-> 如何创建
-> 如何解析
+
+  > 如何创建如何解析
 
 * rust 如何字符串相加
 
-* 32位最大的数
+* 32 位最大的数
 
 ## 2017-12-06 09:36:08
+
 unsafe trait Foo<T> {
-    fn to_string(T)-> &str ;
+fn to_string(T)-> &str ;
 }
 
 unsafe impl Foo for i32 {
-    fn to_string()
+fn to_string()
 }
 
 这个怎么处理
 
-
-
 ## 2017-12-06 09:20:04
+
 * @ques 什么意思
-slice.as_mut_ptr();
+  slice.as_mut_ptr();
 
-* 如何在node中使用rust
-
+* 如何在 node 中使用 rust
 
 ## 2017-12-05 08:59:47
+
 * rust 升级
 
 * @ques
-let mut x = Some(String::from("Bors"));
-Some(ref mut name)
-x 是可变 x里面包含的字符串是可变...
+  let mut x = Some(String::from("Bors"));
+  Some(ref mut name)
+  x 是可变 x 里面包含的字符串是可变...
 
 ## 2017-12-04 09:00:55
-* Result<u8, _> = "34".parse() ??
-> Result 可以从34parse过去??
+
+* Result<u8, \_> = "34".parse() ??
+
+  > Result 可以从 34parse 过去??
 
 * pattern 到底是干什么的??
-> statement expression
+
+  > statement expression
 
 * shadow variables ??
 
-
 ## 2017-12-01 09:17:16
-Rc<T> 可以clone一个对象.. 但是普通的多次move不能用, 这两者有什么区别
+
+Rc<T> 可以 clone 一个对象.. 但是普通的多次 move 不能用, 这两者有什么区别
 
 * @ques Arc 可以保证多线程不会同时操作一个数据, 怎么实现的??
 
-* @ques RefCell如何保证move规则?
-
+* @ques RefCell 如何保证 move 规则?
 
 ## 2017-11-28 09:17:33
+
 #[cfg(test)] 这个是做什么的
 
-
 ## 2017-11-27 09:14:57
-> 这下面报错 是因为 &self.0 在编译的时候不知道T是数字 这个我怎么处理
-> 难道就打印不出来了>??
+
+> 这下面报错 是因为 &self.0 在编译的时候不知道 T 是数字 这个我怎么处理难道就打印不出来了>??
+
 ```rust
 fn main() {
     let y = MyBox::new(5);
@@ -118,19 +134,18 @@ impl<T> Drop for MyBox<T> {
         println!("Dropping CustomSmartPointer with data {}", &self.0);
     }
 }
-
 ```
 
-
-
 * @todo
-> Cargo demo 例子
-> xi editor
----------
+  > Cargo demo 例子
+  > xi editor
+
+---
 
 * @ques
-> 什么是lifetime
-> 如何保证lifetime
+
+  > 什么是 lifetime
+  > 如何保证 lifetime
 
 * @ques enum 是干什么的
 
@@ -138,10 +153,8 @@ impl<T> Drop for MyBox<T> {
 
 * @ques null nil Nil ???
 
-
-
-* @bug
-'can't find crate for `minigrep`'
+- @bug
+  'can't find crate for `minigrep`'
 
 暂停 tomato
 
@@ -151,8 +164,5 @@ tsc doc
 
 Cargo demo 页面..
 
-
 * @todo
-binary crate and a library crate
-
-
+  binary crate and a library crate
