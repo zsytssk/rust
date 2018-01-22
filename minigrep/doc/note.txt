@@ -1,8 +1,24 @@
 ## 2018-01-18 09:48:29
 
+* 这是什么意思 `Option<T>: Debug`
+  * 这个好像可以给一切用 只要他本身支持 debug 就可以, 能 print 出来
+
+```rust
+  // https://rustbyexample.com/generics/where.html
+  impl<T> PrintInOPtion for T
+  where
+  Option<T>: Debug,
+  // let vec = "12312123";  vec.print_in_option();
+  // let vec = vec![1, 2, 3];  vec.print_in_option();
+  // 字符串 数组都可以 这怎么做到的
+```
+
 rustc --crate-name=dest --crate-type=lib src/my/mod.rs
 
 rustc src/main.rs --extern dest=libdest.rlib
+
+* @ques
+  * 什么是 metadata
 
 ## 2018-01-15 09:24:01
 
