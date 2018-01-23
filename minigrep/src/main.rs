@@ -1,37 +1,28 @@
-struct Container(i32, i32);
+use std::ops::Add;
+use std::marker::PhantomData;
 
-trait Contains<A, B> {
-    fn contains(&self, &A, &B) -> bool;
-    fn first(&self) -> i32;
-    fn last(&self) -> i32;
-}
+#[derive(Debug, Clone, Copy)]
+enum Inch {}
 
-impl Contains<i32, i32> for Container {
-    fn contains(&self, number_1: &i32, number_2: &i32) -> bool {
-        (&self.0 == number_1) && (&self.1 == number_2)
-    }
-    fn first(&self) -> i32 {
-        self.0
-    }
-    fn last(&self) -> i32 {
-        self.1
-    }
-}
+#[derive(Debug, Clone, Copy)]
+enum Mm {}
 
-fn difference<A, B, C>(container: &C) -> i32
-where
-    C: Contains<A, B>,
-{
-    container.last() - container.first()
+#[derive(Debug, Clone, Copy)]
+struct Length(f64);
+
+impl Add for Length {
+    type Output = Length;
+    fn add(self, rhs: Length) -> Length {
+        Length(self.0 + rhs.0)
+    }
 }
 
 fn main() {
-    let number_1 = 3;
-    let number_2 = 10;
+    let one_foot: Length = Length(12.0);
+    let one_meter: Length = Length(1000.0);
 
-    let container = Container(number_1, number_2);
-    println!("{}", container.contains(&3, &10));
-    println!("{}", difference(&container));
-    println!("{}", container.first());
-    println!("{}", container.last());
+    let two_feet = one_foot + one_meter;
+    let two_meter = one_meter + one_meter;
+    println!("{:?}", two_feet.0);
+    println!("{:?}", two_meter.0);
 }
